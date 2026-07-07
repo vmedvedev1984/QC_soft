@@ -1,5 +1,5 @@
 from PyQt5 import QtWidgets, QtCore, QtGui, QtWidgets, uic
-from PyQt5.QtWidgets import QFileDialog, QMessageBox, QCheckBox
+from PyQt5.QtWidgets import QFileDialog, QMessageBox, QCheckBox, QTreeWidget, QTreeWidgetItem
 #from PyQt5.QtWidgets import QTableWidgetItem
 #from PyQt5.QtGui import QPen, QColor, QImage, QPixmap, QPainter
 #from PyQt5.QtCore import Qt, QTime, QCoreApplication, QEventLoop, QPointF
@@ -438,6 +438,7 @@ class Window(QtWidgets.QMainWindow):
         
         
 '''
+from pathlib import Path
 
 class Window(QtWidgets.QMainWindow):
     def __init__(self):
@@ -459,9 +460,38 @@ class Window(QtWidgets.QMainWindow):
         #self.tabWidget.setCurrentIndex(0)
         #self.action_3.triggered.connect(self.conf_file_menu)
 
+    def openXLS(self):
+        self.XLSdir = QFileDialog.getOpenFileName(None, 'Open File', './synthes/', "Excel Files (*.xlsx)")
+        if self.XLSdir[0][-4:] == 'xlsx':
+            self.textEdit_2.setText(self.XLSdir[0])
+            wbCSV = load_workbook(filename = self.XLSdir[0])
+            XLSopen = []
+            sheet_ranges = wbCSV['Sheet']
+            lensheet_range = 0
+            while(lensheet_range < len(sheet_ranges['A'])):
+                XLSopen.append(sheet_ranges['A' + str(lensheet_range + 1)].value)
+                XLSopen.append(sheet_ranges['B' + str(lensheet_range + 1)].value)
+                lensheet_range += 1
+        else:
+            return 0
+
     def openFolder(self):
         self.folder_path = QFileDialog.getExistingDirectory(self, "Select Folder")
-        self.textEdit.setText(self.folder_path[:])
+        folder_path = Path(self.folder_path)
+        files = [f.name for f in folder_path.iterdir() if f.is_file() and f.name[-4:]=='xlsx']
+        print(files)
+        self.treeWidget.clear()
+        self.treeWidget.setHeaderLabels([str(self.folder_path)])
+        print(self.folder_path)
+        self.textEdit.setText(self.folder_path)
+        folder_items = []
+        file_count = 0
+        for it in range(len(files)):
+            folder_items.append(QTreeWidgetItem([str(files[it])]))
+            file_count+=1
+        
+        for in_it in range(file_count):
+            self.treeWidget.addTopLevelItem(folder_items[in_it])
         '''self.fastadir = QFileDialog.getOpenFileName(None, 'Open File', './', "Fasta (*.fa *.fasta);;CSV Files (*.csv)")
         self.textEdit.setText(self.fastadir[0])
         if self.fastadir[0][-2:] == 'fa' or self.fastadir[0][-5:] == 'fasta':
