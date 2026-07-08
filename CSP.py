@@ -1,5 +1,5 @@
 from PyQt5 import QtWidgets, QtCore, QtGui, QtWidgets, uic
-from PyQt5.QtWidgets import QFileDialog, QMessageBox, QCheckBox, QTreeWidget, QTreeWidgetItem
+from PyQt5.QtWidgets import QFileDialog, QMessageBox, QCheckBox, QTreeWidget, QTreeWidgetItem, QTableWidget, QTableWidgetItem
 #from PyQt5.QtWidgets import QTableWidgetItem
 #from PyQt5.QtGui import QPen, QColor, QImage, QPixmap, QPainter
 #from PyQt5.QtCore import Qt, QTime, QCoreApplication, QEventLoop, QPointF
@@ -439,6 +439,27 @@ class Window(QtWidgets.QMainWindow):
         
 '''
 from pathlib import Path
+#from PyQt5.QtWidgets import (QGraphicsScene, QGraphicsView, QGraphicsRectItem, QApplication)
+#from PyQt5.QtGui import QBrush, QPen
+#from PyQt5.QtCore import Qt
+import math
+
+from PyQt5.QtCore import (pyqtSignal, QLineF, QPointF, QRect, QRectF, QSize,
+        QSizeF, Qt)
+from PyQt5.QtGui import (QBrush, QColor, QFont, QIcon, QIntValidator, QPainter,
+        QPainterPath, QPen, QPixmap, QPolygonF)
+from PyQt5.QtWidgets import (QAction, QApplication, QButtonGroup, QComboBox,
+        QFontComboBox, QGraphicsItem, QGraphicsLineItem, QGraphicsPolygonItem,
+        QGraphicsScene, QGraphicsTextItem, QGraphicsView, QGridLayout,
+        QHBoxLayout, QLabel, QMainWindow, QMenu, QMessageBox, QSizePolicy,
+        QToolBox, QToolButton, QWidget)
+from PyQt5.QtCore import Qt, QRectF
+from PyQt5.QtGui import QBrush, QColor, QPen
+from PyQt5.QtWidgets import (
+    QApplication, QGraphicsEllipseItem, QGraphicsRectItem,
+    QGraphicsScene, QGraphicsView, QMainWindow)
+import xlrd
+import openpyxl
 
 class Window(QtWidgets.QMainWindow):
     def __init__(self):
@@ -451,6 +472,7 @@ class Window(QtWidgets.QMainWindow):
         #print(self.data)
         #self.label.setText("NewText")
         self.pushButton_6.clicked.connect(self.openFolder)
+        self.treeWidget.itemClicked.connect(self.onItemClicked)
         #self.pushButton_5.clicked.connect(self.stat)
         #self.comboBox.addItems(["40nmol", "200nmol", "1umol"])
         #self.comboBox_2.addItems(["ETT", "DCI"])
@@ -460,8 +482,39 @@ class Window(QtWidgets.QMainWindow):
         #self.tabWidget.setCurrentIndex(0)
         #self.action_3.triggered.connect(self.conf_file_menu)
 
-    def openXLS(self):
-        self.XLSdir = QFileDialog.getOpenFileName(None, 'Open File', './synthes/', "Excel Files (*.xlsx)")
+
+    def onItemClicked(self):
+        #self.XLSdir = self.folder_path + str()
+        #print(self.treeWidget.selectedItems())
+        for item in self.treeWidget.selectedItems():
+                tree_select_file = self.folder_path + f"/{item.text(0)}"
+                wb = load_workbook(tree_select_file)
+                sheet_message = wb["Message"]
+                spectral_param = {'start':sheet_message["C21"].value, 'end':sheet_message["C22"].value, 'step':sheet_message["C23"].value}
+                #print(spectral_param)
+                sheet_layout = wb["Layout"]
+                smp_name = []  #sheet.cell(row=1, column=1).value
+                for smp_coll in range(3, 11):
+                     for smp_row in range(2, 14):
+                        smp_name.append(sheet_layout.cell(row=smp_coll, column=smp_row).value)
+                #print(len(smp_name))
+                for tabl_smp in range(len(smp_name)):
+                    self.tableWidget.setItem(tabl_smp, 0, QTableWidgetItem(smp_name[tabl_smp]))
+
+                self.graphicsViewA1().items()
+                
+                #ellipse = QGraphicsEllipseItem(10, 10, 30, 30)
+                #ellipse.setBrush(QBrush(QColor("tomato")))
+                #print(self.folder_path + f"/{item.text(0)}")
+                #wbCSV = xlrd.open_workbook(tree_select_file)# load_workbook(filename = tree_select_file)
+                #print(wbCSV.sheet_by_name("Layout"))
+                #   wbCSV = load_workbook(filename = tree_select_file)
+                #   sheet_ranges = wbCSV['Sheet']
+                #sheet = wbCSV.sheet_by_name("Layout")
+                #print(sheet_ranges.cell_value(1, 1))
+                #sheet_ranges = wbCSV['Sheet']
+                #print(sheet_ranges)
+        '''self.XLSdir = QFileDialog.getOpenFileName(None, 'Open File', './synthes/', "Excel Files (*.xlsx)")
         if self.XLSdir[0][-4:] == 'xlsx':
             self.textEdit_2.setText(self.XLSdir[0])
             wbCSV = load_workbook(filename = self.XLSdir[0])
@@ -473,16 +526,17 @@ class Window(QtWidgets.QMainWindow):
                 XLSopen.append(sheet_ranges['B' + str(lensheet_range + 1)].value)
                 lensheet_range += 1
         else:
-            return 0
+            return 0'''
 
     def openFolder(self):
         self.folder_path = QFileDialog.getExistingDirectory(self, "Select Folder")
+        #print(self.folder_path)
         folder_path = Path(self.folder_path)
         files = [f.name for f in folder_path.iterdir() if f.is_file() and f.name[-4:]=='xlsx']
-        print(files)
+        #print(files)
         self.treeWidget.clear()
         self.treeWidget.setHeaderLabels([str(self.folder_path)])
-        print(self.folder_path)
+        #print(self.folder_path)
         self.textEdit.setText(self.folder_path)
         folder_items = []
         file_count = 0
