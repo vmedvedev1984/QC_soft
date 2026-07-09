@@ -76,7 +76,7 @@
         </property>
         <widget class="QWidget" name="tab">
          <attribute name="title">
-          <string>Synthesis</string>
+          <string>Spectrometry</string>
          </attribute>
          <layout class="QVBoxLayout" name="verticalLayout_7">
           <item>
@@ -133,18 +133,38 @@
                 <layout class="QHBoxLayout" name="horizontalLayout_5">
                  <item>
                   <widget class="QTreeWidget" name="treeWidget">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
                    <property name="minimumSize">
                     <size>
                      <width>110</width>
                      <height>0</height>
                     </size>
                    </property>
-                   <column>
-                    <property name="text">
-                     <string>Folder Name</string>
-                    </property>
-                   </column>
+                   <property name="maximumSize">
+                    <size>
+                     <width>1677</width>
+                     <height>16777</height>
+                    </size>
+                   </property>
                   </widget>
+                 </item>
+                 <item>
+                  <spacer name="horizontalSpacer">
+                   <property name="orientation">
+                    <enum>Qt::Horizontal</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>40</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                  </spacer>
                  </item>
                  <item>
                   <widget class="QTableWidget" name="tableWidget">
@@ -179,7 +199,7 @@
                     <enum>QAbstractScrollArea::AdjustToContents</enum>
                    </property>
                    <property name="rowCount">
-                    <number>0</number>
+                    <number>96</number>
                    </property>
                    <property name="columnCount">
                     <number>1</number>
@@ -187,11 +207,103 @@
                    <attribute name="horizontalHeaderMinimumSectionSize">
                     <number>30</number>
                    </attribute>
-                   <column>
-                    <property name="text">
-                     <string>Sample Name</string>
-                    </property>
-                   </column>
+                   <row/>
+                   <row/>
+                   <row/>
+                   <row/>
+                   <row/>
+                   <row/>
+                   <row/>
+                   <row/>
+                   <row/>
+                   <row/>
+                   <row/>
+                   <row/>
+                   <row/>
+                   <row/>
+                   <row/>
+                   <row/>
+                   <row/>
+                   <row/>
+                   <row/>
+                   <row/>
+                   <row/>
+                   <row/>
+                   <row/>
+                   <row/>
+                   <row/>
+                   <row/>
+                   <row/>
+                   <row/>
+                   <row/>
+                   <row/>
+                   <row/>
+                   <row/>
+                   <row/>
+                   <row/>
+                   <row/>
+                   <row/>
+                   <row/>
+                   <row/>
+                   <row/>
+                   <row/>
+                   <row/>
+                   <row/>
+                   <row/>
+                   <row/>
+                   <row/>
+                   <row/>
+                   <row/>
+                   <row/>
+                   <row/>
+                   <row/>
+                   <row/>
+                   <row/>
+                   <row/>
+                   <row/>
+                   <row/>
+                   <row/>
+                   <row/>
+                   <row/>
+                   <row/>
+                   <row/>
+                   <row/>
+                   <row/>
+                   <row/>
+                   <row/>
+                   <row/>
+                   <row/>
+                   <row/>
+                   <row/>
+                   <row/>
+                   <row/>
+                   <row/>
+                   <row/>
+                   <row/>
+                   <row/>
+                   <row/>
+                   <row/>
+                   <row/>
+                   <row/>
+                   <row/>
+                   <row/>
+                   <row/>
+                   <row/>
+                   <row/>
+                   <row/>
+                   <row/>
+                   <row/>
+                   <row/>
+                   <row/>
+                   <row/>
+                   <row/>
+                   <row/>
+                   <row/>
+                   <row/>
+                   <row/>
+                   <row/>
+                   <row/>
+                   <column/>
                   </widget>
                  </item>
                  <item>
@@ -216,10 +328,10 @@
                     <widget class="QGraphicsView" name="graphicsView_29"/>
                    </item>
                    <item row="2" column="5">
-                    <widget class="QGraphicsView" name="graphicsView_13"/>
+                    <widget class="QGraphicsView" name="graphicsViewB4"/>
                    </item>
                    <item row="2" column="6">
-                    <widget class="QGraphicsView" name="graphicsView_14"/>
+                    <widget class="QGraphicsView" name="graphicsViewB5"/>
                    </item>
                    <item row="3" column="12">
                     <widget class="QGraphicsView" name="graphicsView_32"/>
@@ -247,16 +359,13 @@
                     <widget class="QGraphicsView" name="graphicsView_25"/>
                    </item>
                    <item row="3" column="2">
-                    <widget class="QGraphicsView" name="graphicsView_22"/>
+                    <widget class="QGraphicsView" name="graphicsViewC1"/>
                    </item>
                    <item row="6" column="9">
                     <widget class="QGraphicsView" name="graphicsView_65"/>
                    </item>
                    <item row="7" column="5">
                     <widget class="QGraphicsView" name="graphicsView_73"/>
-                   </item>
-                   <item row="1" column="12">
-                    <widget class="QTextBrowser" name="textBrowser_2"/>
                    </item>
                    <item row="7" column="1">
                     <widget class="QLabel" name="label_25">
@@ -278,7 +387,7 @@
                     <widget class="QGraphicsView" name="graphicsView_3"/>
                    </item>
                    <item row="2" column="13">
-                    <widget class="QGraphicsView" name="graphicsView_21"/>
+                    <widget class="QGraphicsView" name="graphicsViewB12"/>
                    </item>
                    <item row="7" column="2">
                     <widget class="QGraphicsView" name="graphicsView_70"/>
@@ -310,10 +419,10 @@
                     <widget class="QGraphicsView" name="graphicsView_7"/>
                    </item>
                    <item row="2" column="12">
-                    <widget class="QGraphicsView" name="graphicsView_20"/>
+                    <widget class="QGraphicsView" name="graphicsViewB11"/>
                    </item>
                    <item row="2" column="7">
-                    <widget class="QGraphicsView" name="graphicsView_15"/>
+                    <widget class="QGraphicsView" name="graphicsViewB6"/>
                    </item>
                    <item row="7" column="6">
                     <widget class="QGraphicsView" name="graphicsView_74"/>
@@ -332,7 +441,7 @@
                     <widget class="QGraphicsView" name="graphicsView_33"/>
                    </item>
                    <item row="2" column="2">
-                    <widget class="QGraphicsView" name="graphicsView_10"/>
+                    <widget class="QGraphicsView" name="graphicsViewB1"/>
                    </item>
                    <item row="7" column="4">
                     <widget class="QGraphicsView" name="graphicsView_72"/>
@@ -365,9 +474,6 @@
                       <string>5</string>
                      </property>
                     </widget>
-                   </item>
-                   <item row="1" column="13">
-                    <widget class="QTextBrowser" name="textBrowser_3"/>
                    </item>
                    <item row="4" column="11">
                     <widget class="QGraphicsView" name="graphicsView_43"/>
@@ -418,19 +524,16 @@
                     <widget class="QGraphicsView" name="graphicsView_50"/>
                    </item>
                    <item row="2" column="9">
-                    <widget class="QGraphicsView" name="graphicsView_17"/>
+                    <widget class="QGraphicsView" name="graphicsViewB8"/>
                    </item>
                    <item row="6" column="4">
                     <widget class="QGraphicsView" name="graphicsView_60"/>
                    </item>
                    <item row="1" column="3">
-                    <widget class="QGraphicsView" name="graphicsView_2"/>
+                    <widget class="QGraphicsView" name="graphicsViewA2"/>
                    </item>
                    <item row="3" column="7">
                     <widget class="QGraphicsView" name="graphicsView_27"/>
-                   </item>
-                   <item row="1" column="11">
-                    <widget class="QTextBrowser" name="textBrowser"/>
                    </item>
                    <item row="4" column="8">
                     <widget class="QGraphicsView" name="graphicsView_40"/>
@@ -439,7 +542,7 @@
                     <widget class="QGraphicsView" name="graphicsView_59"/>
                    </item>
                    <item row="1" column="2">
-                    <widget class="QGraphicsView" name="graphicsView"/>
+                    <widget class="QGraphicsView" name="graphicsViewA1"/>
                    </item>
                    <item row="4" column="1">
                     <widget class="QLabel" name="label_22">
@@ -449,10 +552,10 @@
                     </widget>
                    </item>
                    <item row="2" column="4">
-                    <widget class="QGraphicsView" name="graphicsView_12"/>
+                    <widget class="QGraphicsView" name="graphicsViewB3"/>
                    </item>
                    <item row="2" column="3">
-                    <widget class="QGraphicsView" name="graphicsView_11"/>
+                    <widget class="QGraphicsView" name="graphicsViewB2"/>
                    </item>
                    <item row="0" column="4">
                     <widget class="QLabel" name="label_5">
@@ -494,7 +597,7 @@
                     <widget class="QGraphicsView" name="graphicsView_48"/>
                    </item>
                    <item row="3" column="3">
-                    <widget class="QGraphicsView" name="graphicsView_23"/>
+                    <widget class="QGraphicsView" name="graphicsViewC2"/>
                    </item>
                    <item row="7" column="11">
                     <widget class="QGraphicsView" name="graphicsView_79"/>
@@ -519,10 +622,10 @@
                     <widget class="QGraphicsView" name="graphicsView_8"/>
                    </item>
                    <item row="2" column="10">
-                    <widget class="QGraphicsView" name="graphicsView_18"/>
+                    <widget class="QGraphicsView" name="graphicsViewB9"/>
                    </item>
                    <item row="2" column="11">
-                    <widget class="QGraphicsView" name="graphicsView_19"/>
+                    <widget class="QGraphicsView" name="graphicsViewB10"/>
                    </item>
                    <item row="7" column="10">
                     <widget class="QGraphicsView" name="graphicsView_78"/>
@@ -540,7 +643,7 @@
                     <widget class="QGraphicsView" name="graphicsView_76"/>
                    </item>
                    <item row="2" column="8">
-                    <widget class="QGraphicsView" name="graphicsView_16"/>
+                    <widget class="QGraphicsView" name="graphicsViewB7"/>
                    </item>
                    <item row="6" column="2">
                     <widget class="QGraphicsView" name="graphicsView_58"/>
@@ -631,6 +734,15 @@
                      </property>
                     </widget>
                    </item>
+                   <item row="1" column="11">
+                    <widget class="QGraphicsView" name="graphicsViewA10"/>
+                   </item>
+                   <item row="1" column="12">
+                    <widget class="QGraphicsView" name="graphicsViewA11"/>
+                   </item>
+                   <item row="1" column="13">
+                    <widget class="QGraphicsView" name="graphicsViewA12"/>
+                   </item>
                   </layout>
                  </item>
                 </layout>
@@ -649,7 +761,7 @@
                <item>
                 <widget class="QLabel" name="label">
                  <property name="text">
-                  <string>Statistic</string>
+                  <string>Statistics:</string>
                  </property>
                 </widget>
                </item>
@@ -661,66 +773,27 @@
                 </widget>
                </item>
                <item>
-                <widget class="Line" name="line">
-                 <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
-                 </property>
-                </widget>
-               </item>
-               <item>
                 <layout class="QHBoxLayout" name="horizontalLayout_6">
                  <item>
                   <widget class="QLabel" name="label_10">
                    <property name="text">
-                    <string>Time:</string>
+                    <string>260/280</string>
                    </property>
                   </widget>
                  </item>
                  <item>
                   <widget class="QLabel" name="label_11">
                    <property name="text">
-                    <string>- h -- m</string>
+                    <string/>
                    </property>
                   </widget>
                  </item>
-                </layout>
-               </item>
-               <item>
-                <widget class="Line" name="line_3">
-                 <property name="orientation">
-                  <enum>Qt::Horizontal</enum>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <layout class="QHBoxLayout" name="horizontalLayout_7">
                  <item>
                   <widget class="QLabel" name="label_12">
                    <property name="text">
-                    <string>Scale:</string>
+                    <string>___________</string>
                    </property>
                   </widget>
-                 </item>
-                 <item>
-                  <widget class="QComboBox" name="comboBox">
-                   <property name="modelColumn">
-                    <number>0</number>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
-               </item>
-               <item>
-                <layout class="QHBoxLayout" name="horizontalLayout_9">
-                 <item>
-                  <widget class="QLabel" name="label_13">
-                   <property name="text">
-                    <string>Activator:</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QComboBox" name="comboBox_2"/>
                  </item>
                 </layout>
                </item>
@@ -728,22 +801,6 @@
                 <widget class="Line" name="line_4">
                  <property name="orientation">
                   <enum>Qt::Horizontal</enum>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="QCheckBox" name="checkBox_2">
-                 <property name="enabled">
-                  <bool>true</bool>
-                 </property>
-                 <property name="text">
-                  <string>Reverse seqence</string>
-                 </property>
-                 <property name="checked">
-                  <bool>true</bool>
-                 </property>
-                 <property name="tristate">
-                  <bool>false</bool>
                  </property>
                 </widget>
                </item>
@@ -769,13 +826,13 @@
         </widget>
         <widget class="QWidget" name="tab_3">
          <attribute name="title">
-          <string>Postproces</string>
+          <string>Fluorimetry</string>
          </attribute>
          <layout class="QVBoxLayout" name="verticalLayout_8">
           <item>
            <widget class="QGroupBox" name="groupBox">
             <property name="title">
-             <string>Postsynthesis work</string>
+             <string>Flyorimetry_QC</string>
             </property>
             <layout class="QHBoxLayout" name="horizontalLayout_15">
              <item>
@@ -805,33 +862,6 @@
                    </property>
                    <property name="sizeAdjustPolicy">
                     <enum>QAbstractScrollArea::AdjustIgnored</enum>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
-               </item>
-               <item>
-                <layout class="QHBoxLayout" name="horizontalLayout_4">
-                 <item>
-                  <widget class="QPushButton" name="pushButton_3">
-                   <property name="text">
-                    <string>Load Spectrum</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QTextEdit" name="textEdit_3">
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Expanding" vsizetype="Ignored">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="verticalScrollBarPolicy">
-                    <enum>Qt::ScrollBarAlwaysOff</enum>
-                   </property>
-                   <property name="horizontalScrollBarPolicy">
-                    <enum>Qt::ScrollBarAlwaysOff</enum>
                    </property>
                   </widget>
                  </item>
