@@ -489,20 +489,37 @@ class Window(QtWidgets.QMainWindow):
         for item in self.treeWidget.selectedItems():
                 tree_select_file = self.folder_path + f"/{item.text(0)}"
                 wb = load_workbook(tree_select_file)
+                #ИЗВЛЕКАЕМ ИЗ ВКЛАДКИ "Message" ЗНАЧЕНИЯ НАЧАЛА, КАНЦА И ШАГА СПЕКТРАЛЬНОЙ ПОЛОСЫ
                 sheet_message = wb["Message"]
                 spectral_param = {'start':sheet_message["C21"].value, 'end':sheet_message["C22"].value, 'step':sheet_message["C23"].value}
-                #print(spectral_param)
+                spectre_point = int((int(spectral_param['end']) - int(spectral_param["start"]))/int(spectral_param["step"])) + 1
+                #print(spectre_point)
+                #ИЗВЛЕКАЕМ ИЗ ВКЛАДКИ "Layout" ИМЕНА ОБРАЗЦОВ И ПОМЕЩАЕМ ЕГО В ПОЛЕ СПИСКА ОБРАЗЦОВ
                 sheet_layout = wb["Layout"]
-                smp_name = []  #sheet.cell(row=1, column=1).value
+                smp_name = []  
                 for smp_coll in range(3, 11):
                      for smp_row in range(2, 14):
                         smp_name.append(sheet_layout.cell(row=smp_coll, column=smp_row).value)
                 #print(len(smp_name))
                 for tabl_smp in range(len(smp_name)):
                     self.tableWidget.setItem(tabl_smp, 0, QTableWidgetItem(smp_name[tabl_smp]))
-
-                self.graphicsViewA1().items()
+                #ИЗВЛЕКАЕМ ИЗ ВКЛАДКИ "Raw Data" ЗНАЧЕНИЕ ДЛЯ СПЕКТРОВ ОБРАЗЦОВ И СОБИРАЕМ МАССИВ
                 
+                sheet_raw = wb["Raw Data"]
+                smp_spec_data = [] 
+                for smp_point_coll in range(2, 14):
+                     for smp_point_row in range(3, 11):
+                        smp_spec_data.append(sheet_raw.cell(row=smp_point_row, column=smp_point_coll).value)
+                print(smp_spec_data)
+                '''for tabl_smp in range(len(smp_name)):
+                    self.tableWidget.setItem(tabl_smp, 0, QTableWidgetItem(smp_name[tabl_smp]))
+                '''
+                #self.graphicsViewA1().items()
+                rect_item = QGraphicsRectItem(QRectF(1, 1, 101, 118))
+                self.scene = QGraphicsScene(self)
+                self.scene.addItem(rect_item)
+                self.graphicsViewA1.setScene(self.scene)
+                #self.graphicsView.setScene(scene)
                 #ellipse = QGraphicsEllipseItem(10, 10, 30, 30)
                 #ellipse.setBrush(QBrush(QColor("tomato")))
                 #print(self.folder_path + f"/{item.text(0)}")
