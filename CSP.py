@@ -446,6 +446,8 @@ import math
 
 from PyQt5.QtCore import (pyqtSignal, QLineF, QPointF, QRect, QRectF, QSize,
         QSizeF, Qt)
+from PyQt5.QtWidgets import QApplication, QGraphicsScene, QGraphicsView, QGraphicsPathItem
+from PyQt5.QtGui import QPainterPath, QPen, QBrush, QColor
 from PyQt5.QtGui import (QBrush, QColor, QFont, QIcon, QIntValidator, QPainter,
         QPainterPath, QPen, QPixmap, QPolygonF)
 from PyQt5.QtWidgets import (QAction, QApplication, QButtonGroup, QComboBox,
@@ -508,17 +510,29 @@ class Window(QtWidgets.QMainWindow):
                 sheet_raw = wb["Raw Data"]
                 smp_spec_data = [] 
                 for smp_point_coll in range(2, 14):
-                     for smp_point_row in range(3, 11):
-                        smp_spec_data.append(sheet_raw.cell(row=smp_point_row, column=smp_point_coll).value)
+                     for smp_point_row in range(3, 3 + spectre_point):
+                        smp_spec_data.append(float(sheet_raw.cell(row=smp_point_row, column=smp_point_coll).value))
                 print(smp_spec_data)
                 '''for tabl_smp in range(len(smp_name)):
                     self.tableWidget.setItem(tabl_smp, 0, QTableWidgetItem(smp_name[tabl_smp]))
                 '''
                 #self.graphicsViewA1().items()
-                rect_item = QGraphicsRectItem(QRectF(1, 1, 101, 118))
+                path = QPainterPath()
+                self.scene = QGraphicsScene(self)
+                path.moveTo(-60, 190)
+                path.lineTo(10, 120-5)
+                path.lineTo(20, 120-10)
+                path.lineTo(30, 120-35)
+                path_item = QGraphicsPathItem(path)
+                self.scene.addItem(path_item)
+                self.graphicsViewA1.setScene(self.scene)
+                self.graphicsViewB1.setScene(self.scene)
+                self.graphicsViewB3.setScene(self.scene)
+
+                '''rect_item = QGraphicsRectItem(QRectF(1, 1, 101, 118))
                 self.scene = QGraphicsScene(self)
                 self.scene.addItem(rect_item)
-                self.graphicsViewA1.setScene(self.scene)
+                self.graphicsViewA1.setScene(self.scene)'''
                 #self.graphicsView.setScene(scene)
                 #ellipse = QGraphicsEllipseItem(10, 10, 30, 30)
                 #ellipse.setBrush(QBrush(QColor("tomato")))
