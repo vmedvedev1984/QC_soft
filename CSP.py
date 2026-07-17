@@ -508,11 +508,22 @@ class Window(QtWidgets.QMainWindow):
                 #ИЗВЛЕКАЕМ ИЗ ВКЛАДКИ "Raw Data" ЗНАЧЕНИЕ ДЛЯ СПЕКТРОВ ОБРАЗЦОВ И СОБИРАЕМ МАССИВ
                 
                 sheet_raw = wb["Raw Data"]
-                smp_spec_data = [] 
+                #smp_spec_data = [] 
+                d2_smp_spec_data =[]
                 for smp_point_coll in range(2, 14):
-                     for smp_point_row in range(3, 3 + spectre_point):
+                    smp_spec_data = []
+                    for smp_point_row in range(3, 3 + spectre_point):
                         smp_spec_data.append(float(sheet_raw.cell(row=smp_point_row, column=smp_point_coll).value))
-                print(smp_spec_data)
+                    d2_smp_spec_data.append(smp_spec_data)
+
+                #print(smp_spec_data)
+                print(d2_smp_spec_data)
+                for d2_item in range(len(d2_smp_spec_data)):
+                    normalize_spec = [min(d2_smp_spec_data[d2_item])/d2_smp_spec_data[d2_item][item] for item in range(len(d2_smp_spec_data[d2_item]))]
+                    d2_smp_spec_data[d2_item]  #min()
+                print("1")
+                print(normalize_spec)
+
                 '''for tabl_smp in range(len(smp_name)):
                     self.tableWidget.setItem(tabl_smp, 0, QTableWidgetItem(smp_name[tabl_smp]))
                 '''
@@ -520,9 +531,10 @@ class Window(QtWidgets.QMainWindow):
                 path = QPainterPath()
                 self.scene = QGraphicsScene(self)
                 path.moveTo(-60, 190)
-                path.lineTo(10, 120-5)
-                path.lineTo(20, 120-10)
-                path.lineTo(30, 120-35)
+                for point in range(len(normalize_spec)):
+                    path.lineTo(point, 100 - normalize_spec[point])
+                #path.lineTo(20, 120-10)
+                #path.lineTo(30, 120-35)
                 path_item = QGraphicsPathItem(path)
                 self.scene.addItem(path_item)
                 self.graphicsViewA1.setScene(self.scene)
